@@ -69,7 +69,7 @@
 						v-for="link in header.nav"
 						:href="link.href"
 						@click="isNavOpen = false"
-						class="inline-block font-serif text-3xl tracking-wide text-white lg:text-black transition-colors hover:text-light-blue"
+						class="inline-block font-serif text-2xl tracking-wide text-white lg:text-black transition-colors hover:text-light-blue"
 						>{{ link.title }}</a
 					>
 				</nav>
@@ -125,7 +125,7 @@
 					</div>
 				</section>
 				<section id="projects" class="text-center">
-					<h2 class="text-7xl text-light-blue mb-14">{{ projects.title }}</h2>
+					<h2 class="text-7xl text-light-blue mb-8">{{ projects.title }}</h2>
 					<div class="bg-light-blue px-4 sm:px-0 py-28">
 						<div class="container mx-auto">
 							<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
@@ -163,23 +163,28 @@
 					</div>
 				</section>
 				<section id="skills" class="text-center py-24">
-					<h2 class="text-7xl text-light-blue mb-14">{{ skills.title }}</h2>
+					<h2 class="text-7xl text-light-blue mb-10">{{ skills.title }}</h2>
 					<div class="flex flex-wrap justify-center gap-4 lg:gap-20">
 						<img :src="skill.image" :alt="skill.href" v-for="skill in skills.programs" :key="skill.href" class="block w-32 h-32 object-cover" loading="lazy" />
 					</div>
 				</section>
+				<section id="contacts" class="bg-light-blue text-center pt-10 pb-20">
+					<h2 class="text-7xl text-white mb-8">{{ contacts.title }}</h2>
+					<nav class="flex flex-col lg:flex-row justify-center gap-4 lg:gap-20">
+						<a
+							v-for="network in contacts.networks"
+							:href="network.href"
+							target="_blank"
+							class="inline-block font-serif text-3xl tracking-wide text-white transition-colors hover:text-dark-blue"
+							>{{ network.title }}</a
+						>
+					</nav>
+				</section>
 			</main>
-			<footer id="contacts" class="bg-light-blue text-center pt-10 pb-20">
-				<h2 class="text-7xl text-white mb-8">{{ contacts.title }}</h2>
-				<nav class="flex flex-col lg:flex-row justify-center gap-4 lg:gap-20">
-					<a
-						v-for="network in contacts.networks"
-						:href="network.href"
-						target="_blank"
-						class="inline-block font-serif text-3xl tracking-wide text-white transition-colors hover:text-dark-blue"
-						>{{ network.title }}</a
-					>
-				</nav>
+			<footer class="text-center p-2">
+				<span class="block text-xl">Design by <a :href="contacts.networks[0].href" target="_blank" class="inline text-light-blue transition-colors hover:text-dark-blue">Lyubov Matrosova</a></span>
+				<span class="block text-xl">Developed by <a href="https://github.com/ENG1N3X" target="_blank" class="inline text-light-blue transition-colors hover:text-dark-blue">Yuriy K</a></span>
+				<span class="block">Copyright © 2023 | All Rights Reserved</span>
 			</footer>
 		</div>
 
@@ -242,13 +247,13 @@
 								},
 								{
 									image: "assets/images/projects/preview/orca.jpg",
-									full: "assets/images/projects/full/yoga.jpg",
+									full: "assets/images/projects/full/orca.jpg",
 									title: "ORCA PROJECT",
 									// href: "/",
 								},
 								{
 									image: "assets/images/projects/preview/dental.jpg",
-									full: "assets/images/projects/full/yoga.jpg",
+									full: "assets/images/logo.png",
 									title: "Dental portal",
 									href: "https://dentalworld.ru/clinics/",
 								},
@@ -294,10 +299,6 @@
 									title: "Telegram",
 									href: "https://t.me/Just_merm",
 								},
-								// {
-								// 	title: "WhatsApp",
-								// 	href: "/",
-								// },
 								{
 									title: "Mail",
 									href: "mailto:lym.webdesign@gmail.com",
@@ -307,7 +308,6 @@
 						},
 					};
 				},
-				created() {},
 				methods: {
 					toggleMenu() {
 						this.isNavOpen = !this.isNavOpen;
