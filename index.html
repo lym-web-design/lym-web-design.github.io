@@ -10,12 +10,12 @@
 
 		<meta property="og:title" content="Lyubov Matrosova" />
 		<meta property="og:description" content="Website with projects created by Lyubov Matrosova. Web Designer" />
-		<meta property="og:image" content="https://yuriy-k.dev/assets/images/logo.png" />
-		<meta property="og:url" content="https://yuriy-k.dev/" />
+		<meta property="og:image" content="https://lym-web-design.github.io/assets/images/logo.png" />
+		<meta property="og:url" content="https://lym-web-design.github.io/" />
 
 		<title>Lyubov Matrosova</title>
 
-		<link rel="canonical" href="https://yuriy-k.dev/" />
+		<link rel="canonical" href="https://lym-web-design.github.io/" />
 		<link rel="icon" href="./favicon.ico" />
 
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -65,7 +65,11 @@
 					class="fixed lg:static top-0 left-0 z-10 transition-transform w-full h-full bg-black/50 lg:bg-transparent flex flex-col lg:flex-row justify-center items-center lg:justify-end gap-4 lg:gap-16"
 					:class="isNavOpen ? 'translate-y-0' : '-translate-y-full lg:translate-y-0'"
 				>
-					<a v-for="link in header.nav" :href="link.href" class="inline-block font-serif text-3xl tracking-wide text-white lg:text-black transition-colors hover:text-light-blue"
+					<a
+						v-for="link in header.nav"
+						:href="link.href"
+						@click="isNavOpen = false"
+						class="inline-block font-serif text-3xl tracking-wide text-white lg:text-black transition-colors hover:text-light-blue"
 						>{{ link.title }}</a
 					>
 				</nav>
@@ -232,7 +236,7 @@
 							list: [
 								{
 									image: "assets/images/projects/preview/hr.jpg",
-									full: "assets/images/projects/full/yoga.jpg",
+									full: "assets/images/projects/full/hr.jpg",
 									title: "HR PROJECT",
 									// href: "/",
 								},
@@ -246,11 +250,11 @@
 									image: "assets/images/projects/preview/dental.jpg",
 									full: "assets/images/projects/full/yoga.jpg",
 									title: "Dental portal",
-									href: "/",
+									href: "https://dentalworld.ru/clinics/",
 								},
 								{
 									image: "assets/images/projects/preview/gantt.jpg",
-									full: "assets/images/projects/full/yoga.jpg",
+									full: "assets/images/projects/full/gantt.jpg",
 									title: "Gantt",
 									// href: "/",
 								},
@@ -262,7 +266,7 @@
 								},
 								{
 									image: "assets/images/projects/preview/ceramics.jpg",
-									full: "assets/images/projects/full/yoga.jpg",
+									full: "assets/images/projects/full/ceramics.jpg",
 									title: "Ceramics",
 									// href: "/",
 								},
@@ -288,17 +292,17 @@
 							networks: [
 								{
 									title: "Telegram",
-									href: "/",
+									href: "https://t.me/Just_merm",
 								},
-								{
-									title: "WhatsApp",
-									href: "/",
-								},
+								// {
+								// 	title: "WhatsApp",
+								// 	href: "/",
+								// },
 								{
 									title: "Mail",
-									href: "/",
+									href: "mailto:lym.webdesign@gmail.com",
 								},
-								{ title: "Behance", href: "/" },
+								{ title: "Behance", href: "https://www.behance.net/lymatrosova" },
 							],
 						},
 					};
