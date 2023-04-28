@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta httpEquiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta httpEquiv="ScreenOrientation" content="autoRotate:disabled" />
+		<meta name="description" content="Website with projects created by Lyubov Matrosova. Web Designer" />
+
+		<meta property="og:title" content="Lyubov Matrosova" />
+		<meta property="og:description" content="Website with projects created by Lyubov Matrosova. Web Designer" />
+		<meta property="og:image" content="https://yuriy-k.dev/assets/images/logo.png" />
+		<meta property="og:url" content="https://yuriy-k.dev/" />
+
+		<title>Lyubov Matrosova</title>
+
+		<link rel="canonical" href="https://yuriy-k.dev/" />
+		<link rel="icon" href="./favicon.ico" />
+
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Montserrat:wght@400;500&display=swap" rel="stylesheet" />
+
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" />
+
+		<script src="https://cdn.tailwindcss.com"></script>
+		<script>
+			tailwind.config = {
+				theme: {
+					extend: {
+						colors: {
+							"light-blue": "#3A86CC",
+							"dark-blue": "#072036",
+						},
+						fontFamily: {
+							sans: ["Amatic SC", "sans-serif"],
+							serif: ["Montserrat", "sans-serif"],
+						},
+					},
+				},
+			};
+		</script>
+		<style type="text/tailwindcss">
+			@layer utilities {
+				[v-cloak] {
+					display: none !important;
+				}
+			}
+			@layer base {
+				body,
+				html {
+					@apply scroll-smooth;
+				}
+			}
+		</style>
+	</head>
+	<body id="app" v-cloak>
+		<div class="flex flex-col justify-between h-screen">
+			<header class="relative flex justify-between items-center container mx-auto p-4">
+				<a :href="header.logo.href" class="block w-16 transition-opacity hover:opacity-80">
+					<img :src="header.logo.image" :alt="header.logo.href" class="block w-full h-auto object-cover" loading="lazy" />
+				</a>
+				<nav
+					class="fixed lg:static top-0 left-0 z-10 transition-transform w-full h-full bg-black/50 lg:bg-transparent flex flex-col lg:flex-row justify-center items-center lg:justify-end gap-4 lg:gap-16"
+					:class="isNavOpen ? 'translate-y-0' : '-translate-y-full lg:translate-y-0'"
+				>
+					<a v-for="link in header.nav" :href="link.href" class="inline-block font-serif text-3xl tracking-wide text-white lg:text-black transition-colors hover:text-light-blue"
+						>{{ link.title }}</a
+					>
+				</nav>
+				<button type="button" @click="toggleMenu" class="lg:hidden absolute top-1/2 -translate-y-1/2 right-4 z-20">
+					<svg v-if="!isNavOpen" width="40" height="32" viewBox="0 0 40 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path d="M3.80615 5.03906H37.4734" stroke="#3A86CC" stroke-width="3" stroke-linecap="round" />
+						<path
+							d="M4.79639 16.4266C12.3757 16.4266 20.8579 17.5598 28.3139 16.1791C29.9513 15.8759 34.2204 17.7383 35 16.1792"
+							stroke="#3A86CC"
+							stroke-width="3"
+							stroke-linecap="round"
+						/>
+						<path
+							d="M4.30127 27.3188C11.8929 27.3188 19.4845 27.3188 27.0762 27.3188C28.3519 27.3188 35.0671 27.1803 35.493 26.3286"
+							stroke="#3A86CC"
+							stroke-width="3"
+							stroke-linecap="round"
+						/>
+					</svg>
+					<svg v-else width="26" height="30" viewBox="0 0 26 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<g clip-path="url(#clip0_1_115)">
+							<path
+								d="M22.6465 2.04443C20.1434 4.79781 18.0965 8.12559 15.7627 11.0378C12.6158 14.9644 9.23336 18.8589 6.2697 22.9179C5.40098 24.1076 3.16089 26.4683 3.16089 28.0252"
+								stroke="#FFF"
+								stroke-width="3"
+								stroke-linecap="round"
+							/>
+							<path
+								d="M1.66211 5.04248C3.31828 6.39753 5.42376 7.5668 7.26907 8.65092C10.7252 10.6814 13.6992 13.3845 17.0951 15.507C19.1042 16.7626 22.857 19.1637 23.6458 21.5303"
+								stroke="#FFF"
+								stroke-width="3"
+								stroke-linecap="round"
+							/>
+						</g>
+						<defs>
+							<clipPath id="clip0_1_115">
+								<rect width="26" height="30" fill="#FFF" />
+							</clipPath>
+						</defs>
+					</svg>
+				</button>
+			</header>
+			<main>
+				<section id="about" class="container mx-auto px-4 py-24">
+					<div class="flex flex-wrap items-center">
+						<div class="w-full md:w-1/2 order-2 md:order-1">
+							<h1 class="text-6xl md:text-7xl text-light-blue mb-4 md:mb-12" v-html="about.title"></h1>
+							<p class="text-4xl md:text-5xl tracking-wide" v-html="about.description"></p>
+						</div>
+						<div class="w-full md:w-1/2 order-1 md:order-2">
+							<img :src="about.image" :alt="about.title" class="block max-w-[540px] mx-auto w-full h-auto object-cover" loading="lazy" />
+						</div>
+					</div>
+				</section>
+				<section id="projects" class="text-center">
+					<h2 class="text-7xl text-light-blue mb-14">{{ projects.title }}</h2>
+					<div class="bg-light-blue px-4 sm:px-0 py-28">
+						<div class="container mx-auto">
+							<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
+								<div v-for="project in projects.list" :key="project.title">
+									<a :href="project.full" data-fancybox class="block rounded-3xl cursor-pointer overflow-hidden transition-opacity hover:opacity-80 mb-3">
+										<img :src="project.image" :alt="project.href" class="block w-full h-auto object-cover" loading="lazy" />
+									</a>
+									<div class="flex justify-center items-center">
+										<svg v-if="project.href" width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path
+												d="M22 42.4284C33.2824 42.4284 42.4286 33.2822 42.4286 21.9999C42.4286 10.7175 33.2824 1.57129 22 1.57129C10.7176 1.57129 1.57144 10.7175 1.57144 21.9999C1.57144 33.2822 10.7176 42.4284 22 42.4284Z"
+												stroke="white"
+												stroke-width="2"
+												stroke-linecap="round"
+												stroke-linejoin="round"
+											/>
+											<path
+												d="M1.57144 21.9999H42.4286M29.8572 21.9999C29.4712 29.4704 26.7196 36.6247 22 42.4284C17.2804 36.6247 14.5288 29.4704 14.1429 21.9999C14.5288 14.5293 17.2804 7.37505 22 1.57129C26.7196 7.37505 29.4712 14.5293 29.8572 21.9999Z"
+												stroke="white"
+												stroke-width="2"
+												stroke-linecap="round"
+												stroke-linejoin="round"
+											/>
+										</svg>
+										<a v-if="project.href" :href="project.href" target="_blank" class="block text-5xl text-white transition-colors hover:text-dark-blue ml-4"
+											>{{ project.title }}</a
+										>
+										<a v-if="!project.href && project.full" :href="project.full" data-fancybox class="block text-5xl text-white transition-colors hover:text-dark-blue ml-4"
+											>{{ project.title }}</a
+										>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+				<section id="skills" class="text-center py-24">
+					<h2 class="text-7xl text-light-blue mb-14">{{ skills.title }}</h2>
+					<div class="flex flex-wrap justify-center gap-4 lg:gap-20">
+						<img :src="skill.image" :alt="skill.href" v-for="skill in skills.programs" :key="skill.href" class="block w-32 h-32 object-cover" loading="lazy" />
+					</div>
+				</section>
+			</main>
+			<footer id="contacts" class="bg-light-blue text-center pt-10 pb-20">
+				<h2 class="text-7xl text-white mb-8">{{ contacts.title }}</h2>
+				<nav class="flex flex-col lg:flex-row justify-center gap-4 lg:gap-20">
+					<a
+						v-for="network in contacts.networks"
+						:href="network.href"
+						target="_blank"
+						class="inline-block font-serif text-3xl tracking-wide text-white transition-colors hover:text-dark-blue"
+						>{{ network.title }}</a
+					>
+				</nav>
+			</footer>
+		</div>
+
+		<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+		<script>
+			Fancybox.bind("[data-fancybox]");
+		</script>
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.45/vue.global.prod.min.js"
+			integrity="sha512-3CesFAr6COyDB22AiVG2erk2moD1FeL3VMx6UezptTW3qmYdcQhfv6yDGmH4ICNTxd0Rs2AbMQ0Q5lG7J/8n3Q=="
+			crossorigin="anonymous"
+			referrerpolicy="no-referrer"
+		></script>
+		<script>
+			Vue.createApp({
+				data() {
+					return {
+						isNavOpen: false,
+						header: {
+							logo: {
+								image: "assets/images/logo.png",
+								href: "/",
+							},
+							nav: [
+								{
+									title: "Home",
+									href: "/",
+								},
+								{
+									title: "About",
+									href: "#about",
+								},
+								{
+									title: "Projects",
+									href: "#projects",
+								},
+								{
+									title: "Skills",
+									href: "#skills",
+								},
+								{
+									title: "Contacts",
+									href: "#contacts",
+								},
+							],
+						},
+						about: {
+							title: "Hello, i am a <strong>Lyubov</strong> from St.Petersburg, Russia",
+							description: "I've been doing web design since 2021.<br/>This is my <strong>Portfolio</strong>.",
+							image: "assets/images/me.png",
+						},
+						projects: {
+							title: "My projects",
+							list: [
+								{
+									image: "assets/images/projects/preview/hr.jpg",
+									full: "assets/images/projects/full/yoga.jpg",
+									title: "HR PROJECT",
+									// href: "/",
+								},
+								{
+									image: "assets/images/projects/preview/orca.jpg",
+									full: "assets/images/projects/full/yoga.jpg",
+									title: "ORCA PROJECT",
+									// href: "/",
+								},
+								{
+									image: "assets/images/projects/preview/dental.jpg",
+									full: "assets/images/projects/full/yoga.jpg",
+									title: "Dental portal",
+									href: "/",
+								},
+								{
+									image: "assets/images/projects/preview/gantt.jpg",
+									full: "assets/images/projects/full/yoga.jpg",
+									title: "Gantt",
+									// href: "/",
+								},
+								{
+									image: "assets/images/projects/preview/yoga.jpg",
+									full: "assets/images/projects/full/yoga.jpg",
+									title: "Yoga STYDIO",
+									// href: "/",
+								},
+								{
+									image: "assets/images/projects/preview/ceramics.jpg",
+									full: "assets/images/projects/full/yoga.jpg",
+									title: "Ceramics",
+									// href: "/",
+								},
+							],
+						},
+						skills: {
+							title: "My SKILLS",
+							programs: [
+								{
+									image: "assets/images/programs/figma.png",
+								},
+								{
+									image: "assets/images/programs/ps.png",
+								},
+								{
+									image: "assets/images/programs/ai.png",
+								},
+								{ image: "assets/images/programs/procreate.png" },
+							],
+						},
+						contacts: {
+							title: "CONTACTS",
+							networks: [
+								{
+									title: "Telegram",
+									href: "/",
+								},
+								{
+									title: "WhatsApp",
+									href: "/",
+								},
+								{
+									title: "Mail",
+									href: "/",
+								},
+								{ title: "Behance", href: "/" },
+							],
+						},
+					};
+				},
+				created() {},
+				methods: {
+					toggleMenu() {
+						this.isNavOpen = !this.isNavOpen;
+					},
+				},
+				watch: {
+					isNavOpen: {
+						handler(newValue) {
+							if (newValue) {
+								document.querySelector("body").classList.add("overflow-hidden");
+							} else {
+								document.querySelector("body").classList.remove("overflow-hidden");
+							}
+						},
+						deep: true,
+					},
+				},
+			}).mount("#app");
+		</script>
+	</body>
+</html>
